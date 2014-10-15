@@ -6,10 +6,15 @@ install_option=$1
 
 # Ask user for install input if none give.
 if [[ -z "$1" ]]; then
-  echo "Available options: ionic, angular"
+  echo "Available options: ionic, angular, rails"
   printf "Please enter install option: "
   read install_option
 fi
+
+# Install rails
+function install_rails(){
+  vagrant up
+}
 
 # Install ionic
 function install_ionic(){
@@ -43,6 +48,9 @@ case "$install_option" in
     ;;
   "angular" )
     install_angular
+    ;;
+  "rails" )
+    install_rails
     ;;
 esac
 
