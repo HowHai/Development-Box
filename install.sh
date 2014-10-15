@@ -14,6 +14,9 @@ fi
 function installIonic(){
   vagrant up
 
+  # Hack for installing screen; Need to find better solution.
+  vagrant ssh -c "sudo apt-get install screen"
+
   # Reinstall new version of npm
   vagrant ssh -c "sudo apt-get purge nodejs npm"
   vagrant ssh -c "sudo apt-get update"
