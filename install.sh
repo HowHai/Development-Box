@@ -6,12 +6,13 @@ install_option=$1
 
 # Ask user for install input if none give.
 if [[ -z "$1" ]]; then
+  echo "Available options: ionic, angular"
   printf "Please enter install option: "
   read install_option
 fi
 
 # Install ionic
-function installIonic(){
+function install_ionic(){
   vagrant up
 
   # Hack for installing screen; Need to find better solution.
@@ -29,9 +30,19 @@ function installIonic(){
   vagrant ssh -c "sudo npm install -g cordova ionic"
 }
 
+# Install angular
+function install_angular(){
+  vagrant up
+
+  vagrant ssh -c "sudo npm -g install grunt-cli karma bower"
+}
+
 case "$install_option" in
   "ionic" )
-    installIonic
+    install_ionic
+    ;;
+  "angular" )
+    install_angular
     ;;
 esac
 
