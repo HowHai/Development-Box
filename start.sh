@@ -29,6 +29,11 @@ function start_ionic(){
   vagrant ssh -c "cd /vagrant/$app_name && ionic serve 5000 5001"
 }
 
+function start_angular(){
+  vagrant up
+
+  vagrant ssh -c "cd /vagrant/$app_name && sudo npm install && bower install && gulp serve"
+}
 
 case "$app_type" in
   "rails" )
@@ -36,5 +41,8 @@ case "$app_type" in
     ;;
   "ionic" )
     start_ionic
+    ;;
+  "angular" )
+    start_angular
     ;;
 esac

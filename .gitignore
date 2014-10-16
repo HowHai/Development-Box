@@ -1,2 +1,3 @@
 .vagrant
 rails
+npm-debug.log

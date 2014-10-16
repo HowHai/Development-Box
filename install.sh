@@ -39,7 +39,7 @@ function install_ionic(){
 function install_angular(){
   vagrant up
 
-  vagrant ssh -c "sudo npm -g install grunt-cli karma bower"
+  vagrant ssh -c "sudo npm -g install karma bower gulp"
 }
 
 case "$install_option" in
