@@ -20,7 +20,7 @@ fi
 function start_rails(){
   vagrant up
 
-  vagrant ssh -c "cd /vagrant/$app_name && bundle && bundle exec rake db:create && bundle exec rake db:migrate && rails s -p 3000"
+  vagrant ssh -c "cd /vagrant/$app_name && bundle && bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed && rails s -p 3000"
 }
 
 function start_ionic(){
