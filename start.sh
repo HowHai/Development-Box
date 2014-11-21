@@ -7,7 +7,7 @@ app_name=$2
 
 # Check to make sure app type and name exists.
 if [[ -z "$1" ]]; then
-  echo "Available app types: rails, ionic, angular"
+  echo "Available app types: rails, ionic, angular, laravel"
   printf "Please enter application type: "
   read app_type
 fi
@@ -35,6 +35,12 @@ function start_angular(){
   vagrant ssh -c "cd /vagrant/$app_name && sudo npm install && bower install && gulp serve"
 }
 
+function start_laravel(){
+  vagrant up
+
+  vagrant ssh -c "cd /vagrant/$app_name && sudo composer install && php artisan serve --host 0.0.0.0 --port 8000"
+}
+
 case "$app_type" in
   "rails" )
     start_rails
@@ -44,5 +50,8 @@ case "$app_type" in
     ;;
   "angular" )
     start_angular
+    ;;
+  "laravel" )
+    start_laravel
     ;;
 esac
